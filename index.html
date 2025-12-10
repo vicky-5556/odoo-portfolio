@@ -361,7 +361,7 @@
                     <div class="card-content">College Pay System</div>
                     <div class="card-desc">Implemented custom "Payment Receipt" generation & designed Action Buttons for student fee management.</div>
                     <div class="code-box">
-                        <span class="kw">def</span> <span class="func">action_print_receipt</span>(self):<br>&nbsp;&nbsp;<span class="kw">return</span> self.env.ref(<span class="str">'module.report_id'</span>).report_action(self)
+                        <span class="kw">def</span> <span class="func">action_print_receipt</span>(self):<br>&nbsp;&nbsp;<span class="kw">return</span> self.env.ref(<span class="str">'module.report_id'</span>)
                     </div>
                 </div>
 
@@ -469,6 +469,7 @@
     </script>
 </body>
 </html>
+
 
 
 
