@@ -123,6 +123,27 @@
         
         .skill-tag { display: inline-block; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 10; cursor: pointer; }
 
+        /* --- ADDED: TIMELINE CSS (For Experience Page Only) --- */
+        .timeline-container { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+        .timeline-container::after { content: ''; position: absolute; width: 4px; background: linear-gradient(180deg, var(--odoo-green), var(--odoo-purple), transparent); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; box-shadow: 0 0 15px rgba(0, 232, 143, 0.4); }
+        .timeline-box { padding: 10px 40px; position: relative; background: inherit; width: 50%; box-sizing: border-box; }
+        .timeline-box::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background: #0f172a; border: 3px solid var(--odoo-green); top: 25px; border-radius: 50%; z-index: 1; box-shadow: 0 0 10px var(--odoo-green); transition: all 0.3s ease; }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; border-color: var(--odoo-purple); box-shadow: 0 0 10px var(--odoo-purple); }
+        .exp-card { padding: 20px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; backdrop-filter: blur(5px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .exp-card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); z-index: 10; }
+        .role-title { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .company-name { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
+        .exp-date { display: inline-block; padding: 2px 8px; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem; margin-top: 8px; color: var(--odoo-green); border: 1px solid rgba(255,255,255,0.05); }
+        
+        @media screen and (max-width: 600px) {
+            .timeline-container::after { left: 20px; }
+            .timeline-box { width: 100%; padding-left: 50px; padding-right: 10px; }
+            .timeline-box::after { left: 10px; }
+            .right { left: 0%; }
+        }
+
         /* --- 4. DOCK --- */
         .dock-container { position: fixed; bottom: 30px; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); padding: 12px 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); display: flex; gap: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); z-index: 100; animation: float 6s ease-in-out infinite; }
         .dock-icon { width: 50px; height: 50px; background: #1e293b; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #e2e8f0; transition: all 0.3s; cursor: pointer; position: relative; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -168,6 +189,7 @@
     <div class="dock-container">
         <div class="dock-icon active" onclick="loadPage('home', this)"><i class="fas fa-home"></i><span class="dock-tooltip">Home</span></div>
         <div class="dock-icon" onclick="loadPage('projects', this)"><i class="fas fa-code-branch"></i><span class="dock-tooltip">Projects</span></div>
+        <div class="dock-icon" onclick="loadPage('experience', this)"><i class="fas fa-briefcase"></i><span class="dock-tooltip">Experience</span></div>
         <div class="dock-icon" onclick="loadPage('resume', this)"><i class="fas fa-file-alt"></i><span class="dock-tooltip">Resume</span></div>
         <div class="dock-icon" onclick="loadPage('contact', this)"><i class="fas fa-paper-plane"></i><span class="dock-tooltip">Contact</span></div>
     </div>
@@ -287,8 +309,9 @@
         function handleCommand(cmd) {
             let output = '';
             switch(cmd) {
-                case 'help': output = 'Available commands: <span style="color:#00E88F">home, projects, resume, contact, clear</span>'; break;
+                case 'help': output = 'Available commands: <span style="color:#00E88F">home, projects, experience, resume, contact, clear</span>'; break;
                 case 'projects': loadPage('projects'); output = 'Executing: Navigation to Projects...'; break;
+                case 'experience': loadPage('experience'); output = 'Executing: Opening Career Timeline...'; break;
                 case 'resume': loadPage('resume'); output = 'Executing: Fetching Resume...'; break;
                 case 'contact': loadPage('contact'); output = 'Executing: Opening Contact Protocol...'; break;
                 case 'home': loadPage('home'); output = 'Executing: Returning Home...'; break;
@@ -410,6 +433,58 @@
                         • <b>Project App:</b> Added custom Status stages & validation logic.<br>
                         • <b>Development:</b> Built numerous standalone custom modules for specific business logic requirements.
                     </div>
+                    <div class="code-box"><span class="kw">def</span> <span class="func">action_import</span>(self):<br>&nbsp;&nbsp;data = pandas.read_excel(self.file)</div>
+                </div>
+            `,
+
+            /* --- EXPERIENCE SECTION ADDED HERE --- */
+            'experience': `
+                <div class="timeline-container">
+                    
+                    <div class="timeline-box left">
+                        <div class="exp-card" style="border-top: 3px solid var(--odoo-green);">
+                            <div class="role-title">Odoo Developer 🚀</div>
+                            <div class="company-name"><img src="assert_logo.png" style="width:20px; border-radius:4px; background:white; padding:1px;"> Assert IT Solutions</div>
+                            <div class="exp-date">Present (Full-time)</div>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
+                                Promoted to manage production modules. Handling complex <b>POS customizations</b> and end-to-end ERP implementation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-box right">
+                        <div class="exp-card" style="border-top: 3px solid var(--odoo-purple);">
+                            <div class="role-title">Odoo Intern 🎓</div>
+                            <div class="company-name"><img src="assert_logo.png" style="width:20px; border-radius:4px; background:white; padding:1px;"> Assert IT Solutions</div>
+                            <div class="exp-date">4 Months</div>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
+                                Mastered <b>QWeb & XML</b>. Built custom reports and learned the core architecture of Odoo 17/18.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-box left">
+                        <div class="exp-card" style="border-top: 3px solid #3b82f6;">
+                            <div class="role-title">Data Analyst 📊</div>
+                            <div class="company-name"><i class="fab fa-ibm" style="color:#fff;"></i> IBM (Virtual)</div>
+                            <div class="exp-date">3 Months</div>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
+                                Deep dive into data visualization using <b>Python & Pandas</b>. Cleaned complex datasets for insights.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-box right">
+                        <div class="exp-card" style="border-top: 3px solid #eab308;">
+                            <div class="role-title">Analytics Intern 📈</div>
+                            <div class="company-name"><i class="fas fa-chart-pie" style="color:#eab308;"></i> PValue Analytics</div>
+                            <div class="exp-date">1 Month</div>
+                            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
+                                Hands-on experience with business dashboards and reporting metrics.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             `,
 
@@ -448,12 +523,23 @@
         function loadPage(pageName, element) {
             document.querySelectorAll('.dock-icon').forEach(icon => icon.classList.remove('active'));
             if(element) element.classList.add('active');
-            else { const iconMap = {'home':0, 'projects':1, 'resume':2, 'contact':3}; const icons = document.querySelectorAll('.dock-icon'); if(icons[iconMap[pageName]]) icons[iconMap[pageName]].classList.add('active'); }
+            else { 
+                const iconMap = {'home':0, 'projects':1, 'experience':2, 'resume':3, 'contact':4}; 
+                const icons = document.querySelectorAll('.dock-icon'); 
+                if(icons[iconMap[pageName]]) icons[iconMap[pageName]].classList.add('active'); 
+            }
 
             const grid = document.getElementById('main-content');
             grid.innerHTML = ''; grid.innerHTML = pages[pageName];
             
-            const cards = grid.querySelectorAll('.card');
+            // Only use grid layout for pages other than 'experience'
+            if(pageName === 'experience') {
+                grid.style.display = 'block'; // Timeline takes full width
+            } else {
+                grid.style.display = 'grid'; // Bento grid for others
+            }
+            
+            const cards = grid.querySelectorAll('.card, .exp-card');
             cards.forEach((card, index) => { card.style.animation = `popUp 0.5s ease forwards ${index * 0.1}s`; });
             initTilt();
         }
@@ -469,14 +555,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
