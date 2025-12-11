@@ -145,19 +145,19 @@
         .card:hover img, .card:hover i { animation: floatIcon 3s ease-in-out infinite; }
 
         /* --- TIMELINE CSS (EXPERIENCE) --- */
-        .timeline-container { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
+        .timeline-container { position: relative; max-width: 1100px; margin: 0 auto; padding: 20px 0; }
         .timeline-container::after { content: ''; position: absolute; width: 4px; background: linear-gradient(180deg, var(--odoo-green), var(--odoo-purple), transparent); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; box-shadow: 0 0 15px rgba(0, 232, 143, 0.4); }
-        .timeline-box { padding: 10px 40px; position: relative; background: inherit; width: 50%; box-sizing: border-box; }
+        .timeline-box { padding: 10px 50px; position: relative; background: inherit; width: 50%; box-sizing: border-box; }
         .timeline-box::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background: #0f172a; border: 3px solid var(--odoo-green); top: 25px; border-radius: 50%; z-index: 1; box-shadow: 0 0 10px var(--odoo-green); transition: all 0.3s ease; }
         .left { left: 0; }
         .right { left: 50%; }
         .right::after { left: -10px; border-color: var(--odoo-purple); box-shadow: 0 0 10px var(--odoo-purple); }
-        .exp-card { padding: 20px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; backdrop-filter: blur(5px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .exp-card { padding: 30px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; backdrop-filter: blur(5px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); z-index: 10; }
-        .role-title { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .role-title { font-size: 1.5rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
         
         /* UPDATED: Flexbox for Big Logo */
-        .company-name { font-size: 1rem; color: #cbd5e1; display: flex; align-items: center; gap: 12px; }
+        .company-name { font-size: 1.2rem; color: #cbd5e1; display: flex; align-items: center; gap: 12px; }
         
         .exp-date { display: inline-block; padding: 2px 8px; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem; margin-top: 8px; color: var(--odoo-green); border: 1px solid rgba(255,255,255,0.05); }
         
@@ -417,7 +417,7 @@
                     <div class="card-title"><i class="fas fa-briefcase"></i> Current Role</div>
                     <div class="card-content" style="color: var(--odoo-green); font-size: 1.5rem;">Odoo Developer</div>
                     <div class="card-desc" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                        <img src="assert_logo.png" onerror="this.style.display='none'" alt="Assert IT" style="height: 35px; width: auto; background: white; padding: 4px; border-radius: 4px;"> 
+                        <img src="assert_logo.png" onerror="this.style.display='none'" alt="Assert IT" style="height: 35px; width: auto; background: white; padding: 6px; border-radius: 4px;"> 
                         <span>Full-time at <b>Assert IT Solutions</b></span>
                     </div>
                 </div>
@@ -498,7 +498,7 @@
                         <div class="exp-card" style="border-top: 3px solid #3b82f6;">
                             <div class="role-title">Data Analyst 📊</div>
                             <div class="company-name">
-                                <img src="ibm_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="IBM"> 
+                                <img src="ibm_logo.png" style="height:65px; width:auto; border-radius:6px; background:white; padding:6px;" alt="IBM"> 
                                 <span>IBM (Virtual)</span>
                             </div>
                             <div class="exp-date">3 Months</div>
@@ -512,7 +512,7 @@
                         <div class="exp-card" style="border-top: 3px solid #eab308;">
                             <div class="role-title">Analytics Intern 📈</div>
                             <div class="company-name">
-                                <img src="pvalue_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="PValue"> 
+                                <img src="pvalue_logo.png" style="height:65px; width:auto; border-radius:6px; background:white; padding:6px;" alt="PValue"> 
                                 <span>PValue Analytics</span>
                             </div>
                             <div class="exp-date">1 Month</div>
@@ -592,3 +592,4 @@
     </script>
 </body>
 </html>
+
