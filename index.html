@@ -39,7 +39,24 @@
             overflow-x: hidden;
         }
 
-        /* --- BACKGROUND CANVAS (PARTICLES) --- */
+        /* --- GRAINY NOISE TEXTURE --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+            filter: contrast(150%) brightness(100%);
+        }
+
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--odoo-purple); }
+
         #bg-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; opacity: 0.6; pointer-events: none;
@@ -115,15 +132,19 @@
         .card:hover { box-shadow: 0 0 20px rgba(113, 75, 103, 0.4); border-color: rgba(113, 75, 103, 0.5); }
         .card-large { grid-column: span 2; } .card-tall { grid-row: span 2; }
         .card-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        
         .card-content { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-desc { font-size: 0.95rem; color: #94a3b8; line-height: 1.6; }
         
-        .code-box { background: #0f172a; border-radius: 8px; padding: 15px; font-family: monospace; font-size: 0.8rem; border-left: 3px solid var(--odoo-purple); margin-top: 15px; opacity: 0.9; transform: translateZ(20px); }
-        .kw { color: #c084fc; } .str { color: #34d399; } .func { color: #60a5fa; }
+        .code-box { background: #1e1e1e !important; border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 0.8rem; border-left: 3px solid #007acc !important; margin-top: 15px; opacity: 0.9; transform: translateZ(20px); }
+        .kw { color: #569cd6; font-weight: bold; } .str { color: #ce9178; } .func { color: #dcdcaa; }
         
         .skill-tag { display: inline-block; background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.1); position: relative; z-index: 10; cursor: pointer; }
 
-        /* --- ADDED: TIMELINE CSS (For Experience Page Only) --- */
+        @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .card:hover img, .card:hover i { animation: floatIcon 3s ease-in-out infinite; }
+
+        /* --- TIMELINE CSS (EXPERIENCE) --- */
         .timeline-container { position: relative; max-width: 900px; margin: 0 auto; padding: 20px 0; }
         .timeline-container::after { content: ''; position: absolute; width: 4px; background: linear-gradient(180deg, var(--odoo-green), var(--odoo-purple), transparent); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; box-shadow: 0 0 15px rgba(0, 232, 143, 0.4); }
         .timeline-box { padding: 10px 40px; position: relative; background: inherit; width: 50%; box-sizing: border-box; }
@@ -134,7 +155,10 @@
         .exp-card { padding: 20px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; backdrop-filter: blur(5px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); z-index: 10; }
         .role-title { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
-        .company-name { font-size: 0.9rem; color: #cbd5e1; display: flex; align-items: center; gap: 8px; }
+        
+        /* UPDATED: Flexbox for Big Logo */
+        .company-name { font-size: 1rem; color: #cbd5e1; display: flex; align-items: center; gap: 12px; }
+        
         .exp-date { display: inline-block; padding: 2px 8px; background: rgba(255,255,255,0.1); border-radius: 4px; font-size: 0.75rem; margin-top: 8px; color: var(--odoo-green); border: 1px solid rgba(255,255,255,0.05); }
         
         @media screen and (max-width: 600px) {
@@ -347,6 +371,7 @@
             'home': `
                 <div class="card card-large">
                     <div class="card-title"><i class="fas fa-id-badge"></i> Profile</div>
+                    
                     <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
                         <div style="flex: 1;">
                             <div class="card-content">Hi, I'm Vicky.</div>
@@ -369,10 +394,10 @@
                     <div class="card-title"><i class="fas fa-layer-group"></i> Stack</div>
                     <div style="font-size: 2.2rem; display: flex; align-items: center; gap: 15px; margin-top:10px;">
                         <img src="https://images.seeklogo.com/logo-png/32/1/odoo-logo-png_seeklogo-320087.png" alt="Odoo" style="height: 35px; width: auto; filter: drop-shadow(0 0 5px rgba(113, 75, 103, 0.6));">
-                        <i class="fab fa-python" style="color: #FFE873;"></i>
-                        <i class="fab fa-js" style="color: #F7DF1E;"></i>
-                        <i class="fas fa-database" style="color: #336791;"></i>
-                        <i class="fas fa-code" style="color: #E44D26;"></i>
+                        <i class="fab fa-python" style="color: #FFE873;" title="Python"></i>
+                        <i class="fab fa-js" style="color: #F7DF1E;" title="JavaScript"></i>
+                        <i class="fas fa-database" style="color: #336791;" title="PostgreSQL"></i>
+                        <i class="fas fa-code" style="color: #E44D26;" title="XML"></i>
                     </div>
                     <div style="margin-top:15px;">
                         <span class="skill-tag">Odoo 18</span><span class="skill-tag">OWL</span><span class="skill-tag">Python</span><span class="skill-tag">XML</span><span class="skill-tag">Postgresql</span>
@@ -437,14 +462,17 @@
                 </div>
             `,
 
-            /* --- EXPERIENCE SECTION ADDED HERE --- */
+            /* --- EXPERIENCE SECTION WITH BIG LOGOS --- */
             'experience': `
                 <div class="timeline-container">
                     
                     <div class="timeline-box left">
                         <div class="exp-card" style="border-top: 3px solid var(--odoo-green);">
                             <div class="role-title">Odoo Developer 🚀</div>
-                            <div class="company-name"><img src="assert_logo.png" style="width:20px; border-radius:4px; background:white; padding:1px;"> Assert IT Solutions</div>
+                            <div class="company-name">
+                                <img src="assert_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="Assert IT"> 
+                                <span>Assert IT Solutions</span>
+                            </div>
                             <div class="exp-date">Present (Full-time)</div>
                             <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
                                 Promoted to manage production modules. Handling complex <b>POS customizations</b> and end-to-end ERP implementation.
@@ -455,7 +483,10 @@
                     <div class="timeline-box right">
                         <div class="exp-card" style="border-top: 3px solid var(--odoo-purple);">
                             <div class="role-title">Odoo Intern 🎓</div>
-                            <div class="company-name"><img src="assert_logo.png" style="width:20px; border-radius:4px; background:white; padding:1px;"> Assert IT Solutions</div>
+                            <div class="company-name">
+                                <img src="assert_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="Assert IT"> 
+                                <span>Assert IT Solutions</span>
+                            </div>
                             <div class="exp-date">4 Months</div>
                             <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
                                 Mastered <b>QWeb & XML</b>. Built custom reports and learned the core architecture of Odoo 17/18.
@@ -466,7 +497,10 @@
                     <div class="timeline-box left">
                         <div class="exp-card" style="border-top: 3px solid #3b82f6;">
                             <div class="role-title">Data Analyst 📊</div>
-                            <div class="company-name"><i class="fab fa-ibm" style="color:#fff;"></i> IBM (Virtual)</div>
+                            <div class="company-name">
+                                <img src="ibm_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="IBM"> 
+                                <span>IBM (Virtual)</span>
+                            </div>
                             <div class="exp-date">3 Months</div>
                             <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
                                 Deep dive into data visualization using <b>Python & Pandas</b>. Cleaned complex datasets for insights.
@@ -477,7 +511,10 @@
                     <div class="timeline-box right">
                         <div class="exp-card" style="border-top: 3px solid #eab308;">
                             <div class="role-title">Analytics Intern 📈</div>
-                            <div class="company-name"><i class="fas fa-chart-pie" style="color:#eab308;"></i> PValue Analytics</div>
+                            <div class="company-name">
+                                <img src="pvalue_logo.png" style="height:45px; width:auto; border-radius:6px; background:white; padding:4px;" alt="PValue"> 
+                                <span>PValue Analytics</span>
+                            </div>
                             <div class="exp-date">1 Month</div>
                             <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
                                 Hands-on experience with business dashboards and reporting metrics.
