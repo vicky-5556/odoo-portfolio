@@ -135,6 +135,10 @@
         
         .card-content { font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-desc { font-size: 0.95rem; color: #94a3b8; line-height: 1.6; }
+        .card b { transition: color 0.25s ease, text-shadow 0.25s ease; }
+        .card:hover b { color: #ffffff; text-shadow: 0 0 12px rgba(0, 232, 143, 0.8), 0 0 20px rgba(113, 75, 103, 0.6); }
+        .card .term { color: #94a3b8; transition: color 0.25s ease, text-shadow 0.25s ease; }
+        .card:hover .term { color: #ffffff; text-shadow: 0 0 12px rgba(0, 232, 143, 0.8), 0 0 20px rgba(113, 75, 103, 0.6); }
         
         .code-box { background: #1e1e1e !important; border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 0.8rem; border-left: 3px solid #007acc !important; margin-top: 15px; opacity: 0.9; transform: translateZ(20px); }
         .kw { color: #569cd6; font-weight: bold; } .str { color: #ce9178; } .func { color: #dcdcaa; }
@@ -154,6 +158,8 @@
         .right::after { left: -10px; border-color: var(--odoo-purple); box-shadow: 0 0 10px var(--odoo-purple); }
         .exp-card { padding: 30px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; backdrop-filter: blur(5px); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); z-index: 10; }
+        .exp-card b { transition: color 0.25s ease, text-shadow 0.25s ease; }
+        .exp-card:hover b { color: #ffffff; text-shadow: 0 0 12px rgba(0, 232, 143, 0.8), 0 0 20px rgba(113, 75, 103, 0.6); }
         .role-title { font-size: 1.5rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
         
         /* UPDATED: Flexbox for Big Logo */
@@ -400,14 +406,14 @@
                         <i class="fas fa-code" style="color: #E44D26;" title="XML"></i>
                     </div>
                     <div style="margin-top:15px;">
-                        <span class="skill-tag">Odoo 18</span><span class="skill-tag">OWL</span><span class="skill-tag">Python</span><span class="skill-tag">XML</span><span class="skill-tag">Postgresql</span>
+                        <span class="skill-tag term">Odoo 18</span><span class="skill-tag term">OWL</span><span class="skill-tag term">Python</span><span class="skill-tag term">XML</span><span class="skill-tag term">Postgresql</span>
                     </div>
                 </div>
 
                 <div class="card card-tall" style="border-color: var(--odoo-purple);">
                     <div class="card-title" style="color: var(--odoo-green);"><i class="fas fa-star"></i> Featured</div>
                     <div class="card-content">College Pay System</div>
-                    <div class="card-desc">Implemented custom "Payment Receipt" generation & designed Action Buttons for student fee management.</div>
+                    <div class="card-desc"><span class='term'>Implemented custom "Payment Receipt" generation & designed Action Buttons for student fee management.</span></div>
                     <div class="code-box">
                         <span class="kw">def</span> <span class="func">action_print_receipt</span>(self):<br>&nbsp;&nbsp;<span class="kw">return</span> self.env.ref(<span class="str">'module.report_id'</span>)
                     </div>
@@ -417,7 +423,7 @@
                     <div class="card-title"><i class="fas fa-briefcase"></i> Current Role</div>
                     <div class="card-content" style="color: var(--odoo-green); font-size: 1.5rem;">Odoo Developer</div>
                     <div class="card-desc" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-                        <img src="assert_logo.png" onerror="this.style.display='none'" alt="Assert IT" style="height: 35px; width: auto; background: white; padding: 6px; border-radius: 4px;"> 
+                        <img class="no-float" src="assert_logo.png" onerror="this.style.display='none'" alt="Assert IT" style="height: 35px; width: auto; background: white; padding: 6px; border-radius: 4px;"> 
                         <span>Full-time at <b>Assert IT Solutions</b></span>
                     </div>
                 </div>
@@ -442,13 +448,13 @@
                 <div class="card">
                     <div class="card-title" style="color:#00E88F">Education ERP</div>
                     <div class="card-content">Payment System</div>
-                    <div class="card-desc">Designed PDF Receipts and added custom Action Buttons for college fee collection module.</div>
+                    <div class="card-desc"><span class="term">Designed PDF Receipts and added custom Action Buttons for college fee collection module.</span></div>
                 </div>
 
                 <div class="card" style="background: linear-gradient(135deg, #1e293b, #0f172a);">
                     <div class="card-title" style="color:#00E88F">Training</div>
                     <div class="card-content">Client Success</div>
-                    <div class="card-desc">Delivered on-site functional training for Purchase, Sales, Inventory & Manufacturing workflows to end-users.</div>
+                    <div class="card-desc"><span class="term">Delivered on-site functional training for Purchase, Sales, Inventory & Manufacturing workflows to end-users.</span></div>
                 </div>
 
                 <div class="card card-large">
@@ -489,7 +495,7 @@
                             </div>
                             <div class="exp-date">4 Months</div>
                             <p style="font-size: 1rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
-                                Mastered <b>QWeb & XML</b>. Built custom reports and learned the core architecture of Odoo 17/18.
+                                Mastered <b>Custom Module developement and Customized existing modules using python,XML and OWL</b>. Built custom reports and learned the core architecture of Odoo 18.
                             </p>
                         </div>
                     </div>
@@ -516,9 +522,11 @@
                                 <span>PValue Analytics</span>
                             </div>
                             <div class="exp-date">1 Month</div>
-                            <p style="font-size: 1rem; color: #94a3b8; margin-top: 10px; line-height: 1.5;">
-                                Hands-on experience with business dashboards and reporting metrics.
-                            </p>
+                            <ul style="font-size: 1rem; color: #94a3b8; margin-top: 10px; line-height: 1.5; padding-left: 18px; margin-bottom: 0;">
+                                <li>Contributed to the <b>General Election counting</b> and <b>Vidhan Sabha elections</b> project across <b>four states</b>.</li>
+                                <li>Focused on <b>data cleaning</b> and <b>filtering</b> to ensure <b>dataset integrity</b>.</li>
+                                <li>Enhanced <b>analytical skills</b> by understanding <b>leadership dynamics</b> in the electoral process.</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -526,11 +534,30 @@
             `,
 
             'resume': `
-                <div class="card card-large"><div class="card-title">Education</div><div class="card-content">BCA (2025)</div><div class="card-desc">IPEM Group of Institutions, Ghaziabad</div></div>
+                <div class="card card-large"><div class="card-title">Education</div><div class="card-content">BCA (2025)</div><div class="card-desc"><span class='term'>IPEM Group of Institutions, Ghaziabad</span></div></div>
                 <a class="card" href="Vicky_Odoo_Resume.pdf" download="Vicky_Odoo_Resume.pdf" style="text-decoration:none; background: var(--odoo-purple); display:flex; flex-direction:column; justify-content:center;">
                     <div class="card-content" style="color:white; text-align:center;"><i class="fas fa-file-download" style="font-size:3rem; margin-bottom:10px;"></i><br>Download PDF</div>
                 </a>
-                <div class="card card-tall"><div class="card-title">Professional Skills</div><div class="card-desc"><b style="color:white;">Core:</b> Python, PostgreSQL, XML<br><b style="color:white;">Odoo:</b> Module Dev, QWeb, OWL<br><b style="color:white;">Tools:</b> VS Code, Git, Bitbucket, Jupyter, Canva</div></div>
+                <div class="card card-tall"><div class="card-title">Professional Skills</div><div class="card-desc"><b style="color:white;">Core:</b> <span class="term">Python, PostgreSQL, XML</span><br><b style="color:white;">Odoo:</b> <span class="term">Module Dev, QWeb, OWL</span><br><b style="color:white;">Tools:</b> <span class="term">VS Code, Git, Bitbucket, Jupyter, Canva</span></div></div>
+                <div class="card">
+                    <div class="card-title"><i class="fas fa-certificate no-float"></i> Certifications</div>
+                    <div class="card-desc" style="line-height: 1.6; display: flex; flex-direction: column; gap: 10px;">
+                        <div>
+                            <div><b style="color:white;">Web Designing Certification</b></div>
+                            <div><span class="term" style="display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-award no-float" style="color: var(--odoo-green); font-size:0.9rem;"></i> MEGA CAREER INSTITUE</span></div>
+                            <div><span class="term" style="display:inline-flex; align-items:center; gap:6px; font-size:0.9rem;">
+                                <i class="fas fa-map-marker-alt no-float" style="color: var(--odoo-purple); font-size:0.9rem;"></i> (Conducted at IPEM Ghaziabad)
+                            </span></div>
+                        </div>
+                        <div>
+                            <div><b style="color:white;">Python with Django</b></div>
+                            <div><span class="term" style="display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-award no-float" style="color: var(--odoo-green); font-size:0.9rem;"></i> 4Achievers</span></div>
+                            <div><span class="term" style="display:inline-flex; align-items:center; gap:6px; font-size:0.9rem;">
+                                <i class="fas fa-map-marker-alt no-float" style="color: var(--odoo-purple); font-size:0.9rem;"></i> (Conducted at IPEM Ghaziabad)
+                            </span></div>
+                        </div>
+                    </div>
+                </div>
             `,
 
             'contact': `
@@ -592,6 +619,7 @@
     </script>
 </body>
 </html>
+
 
 
 
