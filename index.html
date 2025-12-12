@@ -195,6 +195,12 @@
             .terminal-container { width: 95%; margin-top: 20px; }
             .card { transform: none !important; }
         }
+        @media (max-width: 480px) {
+            .card-content { font-size: 1.3rem; }
+            .skill-tag { padding: 6px 14px; font-size: 0.75rem; }
+            .card-large > div[style*="display: flex"] { flex-direction: column-reverse; align-items: center !important; }
+            .card-large > div[style*="display: flex"] > div:first-child { text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -619,9 +625,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
